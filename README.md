@@ -1,17 +1,11 @@
-# minimal-reproduction-template
-
-First, read the [Renovate minimal reproduction instructions](https://github.com/renovatebot/renovate/blob/main/docs/development/minimal-reproductions.md).
-
-Then replace the current `h1` with the Renovate Issue/Discussion number.
+# Renovate won't upgrade dependencies in pyproject.toml and uv.lock with UV or PEP-621 manager #34181
 
 ## Current behavior
-
-Explain the current behavior here.
+For 12.02.2025 the boto3 package has latest version **1.36.17**, in my pyproject.toml and uv.lock **1.36.13** is specified. In logs down bellow renovate successfully detect package and its version "packageName":"boto3". However, the created MR contains only CI/CD and python-version related things
 
 ## Expected behavior
-
-Explain the expected behavior here.
+The boto3 package or whatever package defined in my pyproject.toml list should be upgraded to the next minor version.
 
 ## Link to the Renovate issue or Discussion
+https://github.com/renovatebot/renovate/discussions/34181
 
-Put your link to the Renovate issue or Discussion here.
