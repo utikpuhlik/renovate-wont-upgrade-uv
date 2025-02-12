@@ -1,0 +1,36 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":dependencyDashboard",
+    ":maintainLockFilesWeekly"
+  ],
+  "timezone": "Europe/Prague",
+  "branchPrefix": "renovate-",
+  "branchTopic": "update-dependencies",
+  "commitMessage": "update dependencies",
+  "rebaseWhen": "behind-base-branch",
+  "recreateClosed": true,
+
+  "assignees": [
+    "vadym.tatarinov"
+  ],
+
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+
+  "packageRules": [
+    {
+      "matchManagers": ["pep621"],
+      "labels": ["Renovate", "Backend"],
+      "groupName": "Main dependencies",
+      "matchPackagePatterns": ["*"],
+      "excludePackageNames": ["pytest", "pytest-asyncio", "coverage", "pre-commit", "tqdm", "ruff"]
+    },
+    {
+      "groupName": "Dev dependencies",
+      "matchPackageNames": ["pytest", "pytest-asyncio", "coverage", "pre-commit", "tqdm", "ruff", "pandas"]
+    }
+  ]
+}

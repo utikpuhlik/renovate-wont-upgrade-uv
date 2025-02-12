@@ -1,0 +1,72 @@
+[project]
+name = "equipment-score"
+version = "2.0.0"
+authors = [{ name = "Vadym Tatarinov", email = "vadym.tatarinov@carvago.com"}]
+description = "Equipment Score endpoint in fastapi, serves for calculating Equipment Score of vehicle base on params"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "boto3>=1.36.13",
+    "ddtrace>=2.20.0",
+    "environs>=14.1.0",
+    "fastapi>=0.115.8",
+    "httpx>=0.28.1",
+    "kbcstorage>=0.9.2",
+    "loguru>=0.7.3",
+    "orjson>=3.10.15",
+    "pandas>=2.2.3",
+    "polars>=1.21.0",
+    "pydantic>=2.10.6",
+    "pydantic-settings>=2.7.1",
+    "sentry-sdk[fastapi]>=2.20.0",
+    "stackprinter>=0.2.12",
+    "uvicorn>=0.34.0",
+]
+
+[dependency-groups]
+dev = [
+    "coverage>=7.6.10",
+    "pre-commit>=4.1.0",
+    "pytest-asyncio>=0.25.3",
+    "ruff>=0.9.4",
+]
+
+[tool.uv]
+package = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "app"]
+asyncio_mode = "auto"
+# https://github.com/pytest-dev/pytest-asyncio/issues/924
+asyncio_default_fixture_loop_scope = "session"
+
+[tool.ruff.format]
+docstring-code-format = true
+quote-style = "double"
+
+[tool.ruff.lint]
+extend-select = ["I", "C4", "SIM"]
+ignore = []
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+show-fixes = true
+target-version = "py312"
+exclude = [
+    ".git",
+    ".git-rewrite",
+    ".ipynb_checkpoints",
+    ".pytest_cache",
+    ".pytype",
+    ".ruff_cache",
+    ".venv",
+    ".vscode",
+    "__pypackages__",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "site-packages",
+    "venv",
+]
